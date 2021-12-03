@@ -10,7 +10,8 @@ def clear():
 def main():
     print("Lets play Hangman")
     #words = ["Hochkuller", "Waschtheke", "Hochtüddlechen" ]
-    guess_me = list(random.choice(word_list))
+    guess_meword = random.choice(word_list)
+    guess_me = list(guess_meword)
     guessed = ['_' for _ in range(len(guess_me))]
     lifepoints = 6
     lp = lifepoints
@@ -32,13 +33,15 @@ def main():
         if correct == False:
             lp -= 1
 
-        clear
+        clear()
 
-        if lp == 0:
-            print(f"You lose! \nthe word was {guess_me}")
+        #if lp == 0:
+            #print(f"You lose! \nthe word was {guess_me}")
 
-    if lp > 0:
-        print(f"You won! \nthe word was {guess_me}")
+    #if lp > 0:
+        #print(f"You won! \nthe word was {guess_me}")
+    #print("You {}!".format('won' if lp > 0 else 'lost'))
+    print("You {}! You word was {}".format('won' if lp > 0 else 'lost', guess_meword))
 
 if __name__ == '__main__':
     main()
