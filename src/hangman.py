@@ -16,7 +16,11 @@ def main():
 
     while (('_' in guessed) and (lp > 0)):
         print(f"{' '.join(guessed).capitalize()}")
-        print(f"Du hast noch {lp}, Lebenspunkte")
+        if lp > 1:
+            print(f"Du hast noch {lp} Lebenspunkte")
+        if lp == 1:
+            print(f"Du hast noch {lp} Lebenspunkt")
+
         guess = input(">>> ")[0].upper()
         correct = False
 
