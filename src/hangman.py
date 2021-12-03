@@ -33,7 +33,11 @@ def main():
 
         clear
 
-    print("You won!")
+        if lp == 0:
+            print(f"You lose! \nthe word was {guess_me}")
+
+    if lp > 0:
+        print(f"You won! \nthe word was {guess_me}")
 
 if __name__ == '__main__':
     main()
