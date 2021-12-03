@@ -3,13 +3,14 @@
 import os
 import random
 import platform
+from words import word_list
 
 def clear():
     os.system('cls' if platform.system() == 'Windows' else 'clear')
 def main():
     print("Lets play Hangman")
-    words = ["Hochkuller", "Waschtheke", "Hochtüddlechen" ]
-    guess_me = list(random.choice(words))
+    #words = ["Hochkuller", "Waschtheke", "Hochtüddlechen" ]
+    guess_me = list(random.choice(word_list))
     guessed = ['_' for _ in range(len(guess_me))]
     lifepoints = 6
     lp = lifepoints
