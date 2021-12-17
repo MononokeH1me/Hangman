@@ -32,7 +32,7 @@ def main_menu():
     gamemode = input(">>> ")[0].upper()
     while gamemode != "Z" and gamemode != "F" and gamemode != "S":
         clear()
-        print("Bitte gib einen gültigen Modus ein" + gamemode)
+        print("Bitte gib einen gültigen Modus ein")
         gamemode = input(">>> ")[0].upper()
 
 
@@ -52,7 +52,7 @@ def read_json(path: str) -> dict:
 
 
 def main(words: list) ->Tuple[int, str]:
-    print("Lets play Hangman")
+    print("Let's play Hangman")
     guess_meword = random.choice(words)
     guess_me = list(guess_meword)
     guessed = ['_' for _ in range(len(guess_me))]
@@ -60,7 +60,8 @@ def main(words: list) ->Tuple[int, str]:
     lp = max_lp
 
     while (('_' in guessed) and (lp > 0)):
-        print(f"{' '.join(guessed).capitalize()}")
+        print(' '.join(guessed).capitalize())
+        #print(f"{' '.join(guessed).capitalize()}")
         print('\n'.join(read_file(f"src/{max_lp - lp}.txt")))
         if lp > 1:
             print(f"Du hast noch {lp} Lebenspunkte")
@@ -74,7 +75,7 @@ def main(words: list) ->Tuple[int, str]:
             if guess == guess_me[i].upper():
                 guessed[i] = guess
                 correct = True
-        if correct == False:
+        if not correct:
             lp -= 1
 
         clear()
@@ -91,6 +92,7 @@ def credits(lp: int, guess_meword: str, mode: str) -> None:
         print(color_string(won, *green))
     if lp == 0:
         print(color_string(lost, *red))
+    #print(color_string(lost, *red if lp == 0 else *green))
     print("\033[39mThe word was:\n {}".format(guess_meword))
     if mode == "Z" or mode == "S":
         for index, translation in enumerate(dictionary[guess_meword]):
